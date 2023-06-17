@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
     get '/current_user', to: 'current_user#get_user'
     get '/current_author', to: 'current_user#get_author'
+    
+    get '/book/:id', to: 'books#show' 
+    post '/book', to: 'books#create'
 
     devise_for :users, path: 'user', path_names: {
       sign_in: 'login',
