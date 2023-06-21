@@ -4,6 +4,9 @@ Rails.application.routes.draw do
     
     get '/book/:id', to: 'books#show' 
     post '/book', to: 'books#create'
+    post '/book/add_cover', to: 'books#add_cover'
+    put '/book', to: 'books#update'
+    delete '/book', to: 'books#destroy'
 
     devise_for :users, path: 'user', path_names: {
       sign_in: 'login',
