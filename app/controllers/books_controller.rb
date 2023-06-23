@@ -6,7 +6,7 @@ class BooksController < ApplicationController
             begin
                 book = Book.find(params[:id])
                 render json: {
-                    data: book
+                    data: book_json(book)
                 }
             rescue ActiveRecord::RecordNotFound
                 render json: {
@@ -18,15 +18,14 @@ class BooksController < ApplicationController
 
     def create 
         book = current_author.books.new(book_params)
-        puts book
         if book.valid?
             book.save
             render json: {
-                data: book
+                data: book_json(book)
             }
         else
             render json: {
-                errors: 'book is not valid'
+                errors: book.errors
             }
         end
     end
@@ -63,7 +62,7 @@ class BooksController < ApplicationController
         }
     
     end
-    
+
     def update
         book_id = params[:id]
         if book_id
@@ -87,17 +86,20 @@ class BooksController < ApplicationController
     
 
     private
-        
+
     def book_params
-        params.permit(:title, :description, :cover)
+        params.permit(:title, :description, :cover, :price)
     end
 
     def book_json(book)
         {
-          id: book.id,
-          title: book.title,
-          description: book.description,
-          cover_url: cover_url(book)
+            book: {
+                id: book.id,
+                title: book.title,
+                description: book.description,
+                cover_url: cover_url(book),
+                created_at: book.created_at
+            }
         }
     end
 

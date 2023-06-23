@@ -2,7 +2,7 @@ Rails.application.routes.draw do
     get '/current_user', to: 'current_user#get_user'
     get '/current_author', to: 'current_user#get_author'
     
-    get '/book/:id', to: 'books#show' 
+    get '/book/:id', to: 'books#show'
     post '/book', to: 'books#create'
     post '/book/add_cover', to: 'books#add_cover'
     put '/book', to: 'books#update'

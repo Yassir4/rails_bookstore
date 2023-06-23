@@ -2,7 +2,7 @@ class Book < ApplicationRecord
   belongs_to :author
   validates :title, length: { minimum: 4, maximum: 30 }
   validates :description, length: { maximum: 500 }
-
+  validates :price, numericality: { greater_than: 0 }
   has_one_attached :cover
   
   validate :validate_cover_image_size
