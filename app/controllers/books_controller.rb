@@ -16,6 +16,33 @@ class BooksController < ApplicationController
         end
     end
 
+
+    def all
+        if params[:page] and Book.page(params[:page])
+            books_page = Book.page(params[:page]).map do |book|
+                {
+                   id: book.id,
+                   title: book.title,
+                   description: book.description,
+                   cover_url: cover_url(book),
+                   created_at: book.created_at,
+                   price: book.price
+                }
+                end
+            
+               render json: {
+                    data: {
+                        books: books_page,
+                        next_page: Book.page(params[:page]).next_page 
+                    }
+                }
+        else
+            render json: {
+                errors: 'something went wrong'
+            }
+        end
+    end
+
     def create 
         book = current_author.books.new(book_params)
         if book.valid?
@@ -98,7 +125,8 @@ class BooksController < ApplicationController
                 title: book.title,
                 description: book.description,
                 cover_url: cover_url(book),
-                created_at: book.created_at
+                created_at: book.created_at,
+                price: book.price
             }
         }
     end

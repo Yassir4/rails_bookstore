@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     post '/book/add_cover', to: 'books#add_cover'
     put '/book', to: 'books#update'
     delete '/book', to: 'books#destroy'
+    get 'books', to: 'books#all'
 
     devise_for :users, path: 'user', path_names: {
       sign_in: 'login',
