@@ -5,7 +5,7 @@ class CurrentUserController < ApplicationController
   def get_user
     if current_user
       render json: {
-        data: current_user
+        data: user_json()
       }  
     end
   end
@@ -18,4 +18,14 @@ class CurrentUserController < ApplicationController
     end
   end
 
+  private
+    def user_json
+      {
+        id: current_user.id,
+        username: current_user.username,
+        email: current_user.email,
+        books_ids: current_user.cart ? current_user.books.map { |b| b[:id] } : []
+      }
+    end
 end
+

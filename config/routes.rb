@@ -9,6 +9,12 @@ Rails.application.routes.draw do
     delete '/book', to: 'books#destroy'
     get 'books', to: 'books#all'
 
+
+
+    post '/cart', to: 'carts#create'
+    delete '/cart', to: 'carts#delete'
+    get '/cart', to: 'carts#index'
+
     devise_for :users, path: 'user', path_names: {
       sign_in: 'login',
       sign_out: 'logout',
