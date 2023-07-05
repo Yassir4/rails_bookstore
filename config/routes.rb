@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     post '/cart', to: 'carts#create'
     delete '/cart', to: 'carts#delete'
     get '/cart', to: 'carts#index'
+    post '/cart/order', to: 'carts#order'
 
     devise_for :users, path: 'user', path_names: {
       sign_in: 'login',

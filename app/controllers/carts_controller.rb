@@ -75,6 +75,21 @@ class CartsController < ApplicationController
     end
 
 
+    def order
+        # just delete the cart
+        if Cart.where(user_id: current_user.id).destroy_all
+            render json: {
+                data: {
+                    books: []
+                }
+            }
+        else
+            render json: {
+                errors: 'something went wrong'
+            }
+        end
+    end
+
     def calculate_books_price
         return current_user.books.sum(:price)
     end
