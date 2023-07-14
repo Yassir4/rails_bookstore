@@ -1,0 +1,21 @@
+version: '3'
+services:
+#   web:
+#     build: .
+#     command: rails server -p 3000 -b '0.0.0.0'
+#     ports:
+#       - 3000:3000
+#     # volumes:
+#       # - .:/app
+#       # - ./sqlite_data:/app/db
+#     # environment:
+#     #   RAILS_ENV: development
+#     #   DATABASE_ADAPTER: sqlite3
+#     #   DATABASE_NAME: /app/db/development.sqlite3
+  app:
+    build: .
+    command: server -p 3000 -b '0.0.0.0'
+    volumes:
+      - .:/app
+    ports:
+      - "3000:3000"

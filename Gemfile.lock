@@ -159,6 +159,8 @@ GEM
     nio4r (2.5.9)
     nokogiri (1.15.2-x86_64-darwin)
       racc (~> 1.4)
+    nokogiri (1.15.2-x86_64-linux)
+      racc (~> 1.4)
     orm_adapter (0.5.0)
     puma (5.6.5)
       nio4r (~> 2.0)
@@ -202,6 +204,7 @@ GEM
       actionpack (>= 5.2)
       railties (>= 5.2)
     sqlite3 (1.6.3-x86_64-darwin)
+    sqlite3 (1.6.3-x86_64-linux)
     thor (1.2.2)
     timeout (0.3.2)
     tzinfo (2.0.6)
@@ -220,6 +223,7 @@ GEM
 
 PLATFORMS
   x86_64-darwin-21
+  x86_64-linux-musl
 
 DEPENDENCIES
   aws-sdk-s3

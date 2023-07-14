@@ -36,8 +36,8 @@ COPY . /app/
 ENTRYPOINT ["bin/rails"]
 
 # Start the Rails application
-CMD ["server", "-b", "0.0.0.0", "-p", "3001"]
-# http://127.0.0.1:3001
+CMD ["server", "-b", "0.0.0.0", "-p", "3000"]
+# http://127.0.0.1:3000
 
-# Expose port 3001 
-EXPOSE 3001
+# Expose port 3000
+EXPOSE 3000
